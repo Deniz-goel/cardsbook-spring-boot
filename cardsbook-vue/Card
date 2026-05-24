@@ -1,0 +1,13 @@
+package de.htw_berlin.cardsbook.cardsbook;
+
+public class Card {
+    public int id;
+    public String title;
+    public String description;
+
+    public Card(int id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+    }
+}

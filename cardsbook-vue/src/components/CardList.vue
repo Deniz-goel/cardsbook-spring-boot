@@ -12,12 +12,13 @@ export default {
   name: 'CardList',
   data() {
     return {
-      cards: [
-        { id: 1, title: 'Karte 1', description: 'Beschreibung 1' },
-        { id: 2, title: 'Karte 2', description: 'Beschreibung 2' },
-        { id: 3, title: 'Karte 3', description: 'Beschreibung 3' },
-      ]
+      cards: []
     }
+  },
+  mounted() {
+    fetch('https://DEIN-BACKEND.onrender.com/api/cards')
+      .then(res => res.json())
+      .then(data => this.cards = data)
   }
 }
 </script>

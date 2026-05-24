@@ -1,0 +1,18 @@
+package de.htw_berlin.cardsbook.cardsbook;
+
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+@RestController
+@CrossOrigin(origins = "*")
+public class CardController {
+
+    @GetMapping("/api/cards")
+    public List<Card> getCards() {
+        return List.of(
+            new Card(1, "Karte 1", "Beschreibung 1"),
+            new Card(2, "Karte 2", "Beschreibung 2"),
+            new Card(3, "Karte 3", "Beschreibung 3")
+        );
+    }
+}
