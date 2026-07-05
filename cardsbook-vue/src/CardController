@@ -1,5 +1,6 @@
 package de.htw_berlin.cardsbook.cardsbook;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -7,12 +8,19 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class CardController {
 
+    private final CardRepository repository;
+
+    public CardController(CardRepository repository) {
+        this.repository = repository;
+    }
+
     @GetMapping("/api/cards")
     public List<Card> getCards() {
-        return List.of(
-            new Card(1, "Karte 1", "Beschreibung 1"),
-            new Card(2, "Karte 2", "Beschreibung 2"),
-            new Card(3, "Karte 3", "Beschreibung 3")
-        );
+        return repository.findAll();
+    }
+
+    @PostMapping("/api/cards")
+    public ResponseEntity<Card> createCard(@RequestBody Card card) {
+        return ResponseEntity.ok(repository.save(card));
     }
 }

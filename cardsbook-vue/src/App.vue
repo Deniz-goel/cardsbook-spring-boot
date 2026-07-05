@@ -8,3 +8,5 @@ export default {
   components: { CardList }
 }
 </script>
+
+//Hier wird die CardList importiert und registriert damit vue weiß dass die Komponente existiert
